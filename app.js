@@ -1,7 +1,7 @@
 import express from "express";
 const app = express();
 
-const coordRouter = "./routes/coordRouter.js";
+import { coordRouter } from "./routes/coordRouter.js";
 
 app.use(express.urlencoded({ extended: true }));
 

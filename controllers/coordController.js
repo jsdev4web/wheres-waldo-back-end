@@ -1,15 +1,25 @@
-const db = '../lib/prisma';
+//const db = '../lib/prisma';
+import { prisma } from "../lib/prisma.js"
 
-async function getCoord(req, res) {
-    res.send("Testing the route")
+async function getCoordHome(req, res) {
+    
+    res.send("Coord Home Page")
 }
 
-async function main() {
-    const character = await db.character.findMany()
+async function getCoordMatch(req, res) {
+    let { id } = req.params
+    id = parseInt(id)
+    const character = await prisma.character.findMany({
+        where: {
+            name: "top"
+        }
+    })
+    
     res.send(character)
 }
 
-
-module.exports = {
-    getCoord
+ 
+export { 
+    getCoordHome, 
+    getCoordMatch
 }

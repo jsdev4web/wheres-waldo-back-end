@@ -1,7 +1,11 @@
 import { Router } from "express";
+import { getCoordHome, getCoordMatch } from "../controllers/coordController.js";
+
 const coordRouter = Router()
-const coordController = "../controllers/coordController.js";
 
-coordRouter.get("/", coordController.getCoord);
 
-module.exports = { coordRouter };
+coordRouter.get("/", getCoordHome);
+coordRouter.get("/:id", getCoordMatch)
+
+
+export { coordRouter };
