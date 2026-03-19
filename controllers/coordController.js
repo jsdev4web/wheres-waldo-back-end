@@ -40,6 +40,7 @@ async function getCoordMatchOne(req, res) {
     //matches the id parameter here
     let { id } = req.params
     id = parseInt(id)
+    console.log(id, " id")
 
     const { one, two } = req.query //returns the query params in fetch query
     console.log(one, "client")
@@ -55,8 +56,12 @@ async function getCoordMatchOne(req, res) {
     //res.send(character)
     console.log(character[0].x, "server")
     console.log(character[0].y, "server")
+
+    const xDiff = Math.abs(one - character[0].x);
+    const yDiff = Math.abs(two - character[0].y);
     
-    if (Math.abs(one - character[0].x <= 125 && two - character[0].y <= 75)) {
+    if (xDiff <= 15 && yDiff <= 15) {
+        console.log("IN RANGE", { xDiff, yDiff });
         const updateIsFalse = await prisma.character.update({
             where: {
                 id: 1,
@@ -79,7 +84,6 @@ async function getCoordMatchTwo(req, res) {
 
     const { one, two } = req.query //returns the query params in fetch query
 
-
     console.log(one, "client")
     console.log(two, "client")
     console.log("It works on two")
@@ -92,8 +96,12 @@ async function getCoordMatchTwo(req, res) {
     
     console.log(character[0].x, "server")
     console.log(character[0].y, "server")
+
+    const xDiff = Math.abs(one - character[0].x);
+    const yDiff = Math.abs(two - character[0].y);
     
-    if (Math.abs(one - character[0].x <= 125 && two - character[0].y <= 75)) {
+    if (xDiff <= 15 && yDiff <= 15) {
+        console.log("IN RANGE", { xDiff, yDiff });
         const updateIsFalse = await prisma.character.update({
             where: {
                 id: 2,
@@ -112,6 +120,7 @@ async function getCoordMatchTwo(req, res) {
 async function getCoordMatchThree(req, res) {
     let { id } = req.params
     id = parseInt(id)
+    console.log(id, " id")
 
     const { one, two } = req.query //returns the query params in fetch query
 
@@ -126,8 +135,14 @@ async function getCoordMatchThree(req, res) {
         }
     }) 
     
+    console.log(character[0].x, "server")
+    console.log(character[0].y, "server")
+
+    const xDiff = Math.abs(one - character[0].x);
+    const yDiff = Math.abs(two - character[0].y);
     
-    if (Math.abs(one - character[0].x <= 125 && two - character[0].y <= 75)) {
+    if (xDiff <= 15 && yDiff <= 15) {
+        console.log("IN RANGE", { xDiff, yDiff });
         const updateIsFalse = await prisma.character.update({
             where: {
                 id: 3,
